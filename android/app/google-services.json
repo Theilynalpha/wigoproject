@@ -1,0 +1,90 @@
+{
+  "project_info": {
+    "project_number": "9248731421",
+    "project_id": "wgpf-53a53",
+    "storage_bucket": "wgpf-53a53.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:9248731421:android:83c066b5beece6311131f4",
+        "android_client_info": {
+          "package_name": "com.flutterflow.wigoapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "9248731421-d0e8gr4b98h12c1a3ets8d43471m2mcm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.flutterflow.wigoapp",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "9248731421-k68h5otuih75cnvuh0eq38f28trkt5dr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBz2dg5uzFHqdbi-lKGjy1e4zhLkUcd8Qg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "9248731421-k68h5otuih75cnvuh0eq38f28trkt5dr.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "9248731421-3ul1l9r0lljrs48b5k7udf64a5tiru98.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mycompany.wigofp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:9248731421:android:3d2a67eeab5068c51131f4",
+        "android_client_info": {
+          "package_name": "com.mycompany.wigofp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "9248731421-k68h5otuih75cnvuh0eq38f28trkt5dr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBz2dg5uzFHqdbi-lKGjy1e4zhLkUcd8Qg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "9248731421-k68h5otuih75cnvuh0eq38f28trkt5dr.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "9248731421-3ul1l9r0lljrs48b5k7udf64a5tiru98.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mycompany.wigofp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

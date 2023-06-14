@@ -6,7 +6,6 @@ export '/general/complete_profile/complete_profile_widget.dart'
     show CompleteProfileWidget;
 export '/pages/forgot_password/forgot_password_widget.dart'
     show ForgotPasswordWidget;
-export '/general/onboarding/onboarding_widget.dart' show OnboardingWidget;
 export '/pages/m_y_card/m_y_card_widget.dart' show MYCardWidget;
 export '/pages/m_y_profile_page/m_y_profile_page_widget.dart'
     show MYProfilePageWidget;
@@ -48,4 +47,3 @@ export '/directory/directory_widget.dart' show DirectoryWidget;
 export '/pages/notifications_settings_copy/notifications_settings_copy_widget.dart'
     show NotificationsSettingsCopyWidget;
 export '/invite/invite_widget.dart' show InviteWidget;
-export '/splash_screen/splash_screen_widget.dart' show SplashScreenWidget;

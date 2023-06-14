@@ -1,9 +1,7 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/general/home_page/home_page_widget.dart';
-import '/general/register_account/register_account_widget.dart';
-import '/pages/forgot_password/forgot_password_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -30,6 +28,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
 
     _model.emailAddressLoginController ??= TextEditingController();
     _model.passwordLoginController ??= TextEditingController();
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -271,13 +270,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                         0.0, 24.0, 0.0, 24.0),
                                     child: FFButtonWidget(
                                       onPressed: () async {
-                                        await Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                ForgotPasswordWidget(),
-                                          ),
-                                        );
+                                        context.pushNamed('forgotPassword');
                                       },
                                       text: FFLocalizations.of(context).getText(
                                         'm2xyjvuf' /* Forgot Password? */,
@@ -305,13 +298,20 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                   ),
                                   FFButtonWidget(
                                     onPressed: () async {
-                                      await Navigator.push(
+                                      GoRouter.of(context).prepareAuthEvent();
+
+                                      final user =
+                                          await authManager.signInWithEmail(
                                         context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              HomePageWidget(),
-                                        ),
+                                        _model.emailAddressLoginController.text,
+                                        _model.passwordLoginController.text,
                                       );
+                                      if (user == null) {
+                                        return;
+                                      }
+
+                                      context.goNamedAuth(
+                                          'MY_Card', context.mounted);
                                     },
                                     text: FFLocalizations.of(context).getText(
                                       'qbmoi1av' /* Login */,
@@ -348,13 +348,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
-                                      await Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              RegisterAccountWidget(),
-                                        ),
-                                      );
+                                      context.pushNamed('registerAccount');
                                     },
                                     child: Container(
                                       width: MediaQuery.of(context).size.width *

@@ -4,7 +4,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -14,12 +13,7 @@ import 'booking_old_model.dart';
 export 'booking_old_model.dart';
 
 class BookingOldWidget extends StatefulWidget {
-  const BookingOldWidget({
-    Key? key,
-    this.userProfile,
-  }) : super(key: key);
-
-  final DocumentReference? userProfile;
+  const BookingOldWidget({Key? key}) : super(key: key);
 
   @override
   _BookingOldWidgetState createState() => _BookingOldWidgetState();
@@ -437,7 +431,7 @@ class _BookingOldWidgetState extends State<BookingOldWidget> {
                   children: [
                     FFButtonWidget(
                       onPressed: () async {
-                        Navigator.pop(context);
+                        context.pop();
                       },
                       text: FFLocalizations.of(context).getText(
                         '2pmd2p3w' /* Cancel */,

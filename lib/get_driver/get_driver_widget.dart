@@ -2,7 +2,6 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/home8_product_list/home8_product_list_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -25,7 +24,6 @@ class _GetDriverWidgetState extends State<GetDriverWidget>
   late GetDriverModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final _unfocusNode = FocusNode();
 
   final animationsMap = {
     'containerOnPageLoadAnimation1': AnimationInfo(
@@ -155,20 +153,21 @@ class _GetDriverWidgetState extends State<GetDriverWidget>
           !anim.applyInitialState),
       this,
     );
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
   void dispose() {
     _model.dispose();
 
-    _unfocusNode.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -181,7 +180,7 @@ class _GetDriverWidgetState extends State<GetDriverWidget>
             hoverColor: Colors.transparent,
             highlightColor: Colors.transparent,
             onTap: () async {
-              Navigator.pop(context);
+              context.pop();
             },
             child: Icon(
               Icons.chevron_left_rounded,
@@ -407,13 +406,8 @@ class _GetDriverWidgetState extends State<GetDriverWidget>
                                         children: [
                                           FFButtonWidget(
                                             onPressed: () async {
-                                              await Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      Home8ProductListWidget(),
-                                                ),
-                                              );
+                                              context.pushNamed(
+                                                  'Home8ProductList');
                                             },
                                             text: FFLocalizations.of(context)
                                                 .getText(

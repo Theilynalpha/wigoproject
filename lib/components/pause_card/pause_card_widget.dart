@@ -28,6 +28,8 @@ class _PauseCardWidgetState extends State<PauseCardWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => PauseCardModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -85,7 +87,7 @@ class _PauseCardWidgetState extends State<PauseCardWidget> {
                 children: [
                   FFButtonWidget(
                     onPressed: () async {
-                      Navigator.pop(context);
+                      context.pop();
                     },
                     text: FFLocalizations.of(context).getText(
                       'omtrfcm5' /* Nevermind */,
@@ -104,12 +106,12 @@ class _PauseCardWidgetState extends State<PauseCardWidget> {
                         color: Colors.transparent,
                         width: 1.0,
                       ),
-                      borderRadius: BorderRadius.circular(8.0),
+                      borderRadius: BorderRadius.circular(30.0),
                     ),
                   ),
                   FFButtonWidget(
                     onPressed: () async {
-                      Navigator.pop(context);
+                      context.pop();
                     },
                     text: FFLocalizations.of(context).getText(
                       'hw07mkb9' /* Yes, Pause */,
@@ -132,7 +134,7 @@ class _PauseCardWidgetState extends State<PauseCardWidget> {
                         color: Colors.transparent,
                         width: 1.0,
                       ),
-                      borderRadius: BorderRadius.circular(12.0),
+                      borderRadius: BorderRadius.circular(30.0),
                     ),
                   ),
                 ],

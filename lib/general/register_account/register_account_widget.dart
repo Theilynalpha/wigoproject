@@ -1,8 +1,7 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/general/complete_profile/complete_profile_widget.dart';
-import '/general/login_page/login_page_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -30,6 +29,7 @@ class _RegisterAccountWidgetState extends State<RegisterAccountWidget> {
     _model.emailAddressController ??= TextEditingController();
     _model.passwordCreateController ??= TextEditingController();
     _model.passwordConfirmController ??= TextEditingController();
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -346,13 +346,32 @@ class _RegisterAccountWidgetState extends State<RegisterAccountWidget> {
                                     0.0, 24.0, 0.0, 24.0),
                                 child: FFButtonWidget(
                                   onPressed: () async {
-                                    await Navigator.push(
+                                    GoRouter.of(context).prepareAuthEvent();
+                                    if (_model.passwordCreateController.text !=
+                                        _model.passwordConfirmController.text) {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content: Text(
+                                            'Passwords don\'t match!',
+                                          ),
+                                        ),
+                                      );
+                                      return;
+                                    }
+
+                                    final user = await authManager
+                                        .createAccountWithEmail(
                                       context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            CompleteProfileWidget(),
-                                      ),
+                                      _model.emailAddressController.text,
+                                      _model.passwordCreateController.text,
                                     );
+                                    if (user == null) {
+                                      return;
+                                    }
+
+                                    context.goNamedAuth(
+                                        'MY_Card', context.mounted);
                                   },
                                   text: FFLocalizations.of(context).getText(
                                     '5kmjfwsk' /* Create Account */,
@@ -395,17 +414,17 @@ class _RegisterAccountWidgetState extends State<RegisterAccountWidget> {
                                       hoverColor: Colors.transparent,
                                       highlightColor: Colors.transparent,
                                       onTap: () async {
-                                        await Navigator.push(
-                                          context,
-                                          PageTransition(
-                                            type:
-                                                PageTransitionType.leftToRight,
-                                            duration:
-                                                Duration(milliseconds: 220),
-                                            reverseDuration:
-                                                Duration(milliseconds: 220),
-                                            child: LoginPageWidget(),
-                                          ),
+                                        context.pushNamed(
+                                          'loginPage',
+                                          extra: <String, dynamic>{
+                                            kTransitionInfoKey: TransitionInfo(
+                                              hasTransition: true,
+                                              transitionType: PageTransitionType
+                                                  .leftToRight,
+                                              duration:
+                                                  Duration(milliseconds: 220),
+                                            ),
+                                          },
                                         );
                                       },
                                       child: Row(

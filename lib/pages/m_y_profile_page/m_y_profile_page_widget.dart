@@ -3,12 +3,6 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/general/login_page/login_page_widget.dart';
-import '/pages/change_password/change_password_widget.dart';
-import '/pages/notifications_settings/notifications_settings_widget.dart';
-import '/pages/privacy_policy/privacy_policy_widget.dart';
-import '/pages/tutorial_p_r_o_f_i_l_e/tutorial_p_r_o_f_i_l_e_widget.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -17,12 +11,7 @@ import 'm_y_profile_page_model.dart';
 export 'm_y_profile_page_model.dart';
 
 class MYProfilePageWidget extends StatefulWidget {
-  const MYProfilePageWidget({
-    Key? key,
-    this.userProfile,
-  }) : super(key: key);
-
-  final DocumentReference? userProfile;
+  const MYProfilePageWidget({Key? key}) : super(key: key);
 
   @override
   _MYProfilePageWidgetState createState() => _MYProfilePageWidgetState();
@@ -37,6 +26,8 @@ class _MYProfilePageWidgetState extends State<MYProfilePageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => MYProfilePageModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -136,15 +127,13 @@ class _MYProfilePageWidgetState extends State<MYProfilePageWidget> {
                                         size: 24.0,
                                       ),
                                       onPressed: () async {
+                                        GoRouter.of(context).prepareAuthEvent();
                                         await authManager.signOut();
-                                        await Navigator.pushAndRemoveUntil(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                LoginPageWidget(),
-                                          ),
-                                          (r) => false,
-                                        );
+                                        GoRouter.of(context)
+                                            .clearRedirectLocation();
+
+                                        context.goNamedAuth(
+                                            'loginPage', context.mounted);
                                       },
                                     ),
                                   ),
@@ -286,12 +275,7 @@ class _MYProfilePageWidgetState extends State<MYProfilePageWidget> {
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () async {
-                      await Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ChangePasswordWidget(),
-                        ),
-                      );
+                      context.pushNamed('changePassword');
                     },
                     child: Material(
                       color: Colors.transparent,
@@ -357,12 +341,7 @@ class _MYProfilePageWidgetState extends State<MYProfilePageWidget> {
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () async {
-                      await Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => NotificationsSettingsWidget(),
-                        ),
-                      );
+                      context.pushNamed('notificationsSettings');
                     },
                     child: Material(
                       color: Colors.transparent,
@@ -428,12 +407,7 @@ class _MYProfilePageWidgetState extends State<MYProfilePageWidget> {
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () async {
-                      await Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => TutorialPROFILEWidget(),
-                        ),
-                      );
+                      context.pushNamed('tutorial_PROFILE');
                     },
                     child: Material(
                       color: Colors.transparent,
@@ -499,12 +473,7 @@ class _MYProfilePageWidgetState extends State<MYProfilePageWidget> {
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () async {
-                      await Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => PrivacyPolicyWidget(),
-                        ),
-                      );
+                      context.pushNamed('privacyPolicy');
                     },
                     child: Material(
                       color: Colors.transparent,
@@ -584,7 +553,7 @@ class _MYProfilePageWidgetState extends State<MYProfilePageWidget> {
                       color: Colors.transparent,
                       width: 1.0,
                     ),
-                    borderRadius: BorderRadius.circular(8.0),
+                    borderRadius: BorderRadius.circular(30.0),
                   ),
                 ),
               ),

@@ -27,6 +27,7 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
     _model = createModel(context, () => ChangePasswordModel());
 
     _model.emailAddressController ??= TextEditingController();
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -50,7 +51,7 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
           hoverColor: Colors.transparent,
           highlightColor: Colors.transparent,
           onTap: () async {
-            Navigator.pop(context);
+            context.pop();
           },
           child: Icon(
             Icons.chevron_left_rounded,

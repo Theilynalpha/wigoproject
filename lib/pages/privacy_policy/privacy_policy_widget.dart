@@ -23,6 +23,8 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => PrivacyPolicyModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -46,7 +48,7 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
           hoverColor: Colors.transparent,
           highlightColor: Colors.transparent,
           onTap: () async {
-            Navigator.pop(context);
+            context.pop();
           },
           child: Icon(
             Icons.chevron_left_rounded,

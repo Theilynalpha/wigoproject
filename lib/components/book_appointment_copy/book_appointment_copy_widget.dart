@@ -4,7 +4,6 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -16,12 +15,7 @@ import 'book_appointment_copy_model.dart';
 export 'book_appointment_copy_model.dart';
 
 class BookAppointmentCopyWidget extends StatefulWidget {
-  const BookAppointmentCopyWidget({
-    Key? key,
-    this.userProfile,
-  }) : super(key: key);
-
-  final DocumentReference? userProfile;
+  const BookAppointmentCopyWidget({Key? key}) : super(key: key);
 
   @override
   _BookAppointmentCopyWidgetState createState() =>
@@ -156,6 +150,8 @@ class _BookAppointmentCopyWidgetState extends State<BookAppointmentCopyWidget>
           !anim.applyInitialState),
       this,
     );
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -409,7 +405,7 @@ class _BookAppointmentCopyWidgetState extends State<BookAppointmentCopyWidget>
                   children: [
                     FFButtonWidget(
                       onPressed: () async {
-                        Navigator.pop(context);
+                        context.pop();
                       },
                       text: FFLocalizations.of(context).getText(
                         'wl5s436v' /* Cancel */,

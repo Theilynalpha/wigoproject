@@ -3,7 +3,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -12,12 +11,7 @@ import 'edit_profile_model.dart';
 export 'edit_profile_model.dart';
 
 class EditProfileWidget extends StatefulWidget {
-  const EditProfileWidget({
-    Key? key,
-    this.userProfile,
-  }) : super(key: key);
-
-  final DocumentReference? userProfile;
+  const EditProfileWidget({Key? key}) : super(key: key);
 
   @override
   _EditProfileWidgetState createState() => _EditProfileWidgetState();
@@ -37,6 +31,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
     _model.yourEmailController ??= TextEditingController();
     _model.yourAgeController ??= TextEditingController();
     _model.yourTitleController ??= TextEditingController();
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -60,7 +55,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
           hoverColor: Colors.transparent,
           highlightColor: Colors.transparent,
           onTap: () async {
-            Navigator.pop(context);
+            context.pop();
           },
           child: Icon(
             Icons.chevron_left_rounded,
@@ -402,7 +397,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
                 child: FFButtonWidget(
                   onPressed: () async {
-                    Navigator.pop(context);
+                    context.pop();
                   },
                   text: FFLocalizations.of(context).getText(
                     'i6edcl52' /* Save Changes */,

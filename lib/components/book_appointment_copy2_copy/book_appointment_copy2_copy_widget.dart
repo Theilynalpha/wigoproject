@@ -1,4 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -6,7 +5,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -19,12 +17,7 @@ import 'book_appointment_copy2_copy_model.dart';
 export 'book_appointment_copy2_copy_model.dart';
 
 class BookAppointmentCopy2CopyWidget extends StatefulWidget {
-  const BookAppointmentCopy2CopyWidget({
-    Key? key,
-    this.userProfile,
-  }) : super(key: key);
-
-  final DocumentReference? userProfile;
+  const BookAppointmentCopy2CopyWidget({Key? key}) : super(key: key);
 
   @override
   _BookAppointmentCopy2CopyWidgetState createState() =>
@@ -263,7 +256,9 @@ class _BookAppointmentCopy2CopyWidgetState
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 12.0),
                 child: Text(
-                  currentUserEmail,
+                  FFLocalizations.of(context).getText(
+                    '9foq6l3l' /* Emails will be sent to: */,
+                  ),
                   style: FlutterFlowTheme.of(context).titleMedium.override(
                         fontFamily: 'Lexend',
                         color: FlutterFlowTheme.of(context).primary,

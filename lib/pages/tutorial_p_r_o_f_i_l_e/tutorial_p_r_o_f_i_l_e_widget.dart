@@ -20,16 +20,13 @@ class _TutorialPROFILEWidgetState extends State<TutorialPROFILEWidget> {
   late TutorialPROFILEModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  int get pageViewCurrentIndex => _model.pageViewController != null &&
-          _model.pageViewController!.hasClients &&
-          _model.pageViewController!.page != null
-      ? _model.pageViewController!.page!.round()
-      : 0;
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => TutorialPROFILEModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -53,7 +50,7 @@ class _TutorialPROFILEWidgetState extends State<TutorialPROFILEWidget> {
           hoverColor: Colors.transparent,
           highlightColor: Colors.transparent,
           onTap: () async {
-            Navigator.pop(context);
+            context.pop();
           },
           child: Icon(
             Icons.chevron_left_rounded,
@@ -135,13 +132,13 @@ class _TutorialPROFILEWidgetState extends State<TutorialPROFILEWidget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 20.0),
                                           child: Image.asset(
-                                            'assets/images/fin_onboarding_1@2x.png',
+                                            'assets/images/Frame_(1).png',
                                             width: MediaQuery.of(context)
                                                     .size
                                                     .width *
                                                 0.7,
                                             height: 300.0,
-                                            fit: BoxFit.fitWidth,
+                                            fit: BoxFit.contain,
                                           ),
                                         ),
                                       ],
@@ -209,10 +206,10 @@ class _TutorialPROFILEWidgetState extends State<TutorialPROFILEWidget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 20.0),
                                           child: Image.asset(
-                                            'assets/images/fin_onboarding_2@2x.png',
+                                            'assets/images/Frame_(2).png',
                                             width: 300.0,
                                             height: 300.0,
-                                            fit: BoxFit.fitHeight,
+                                            fit: BoxFit.contain,
                                           ),
                                         ),
                                       ],
@@ -280,10 +277,10 @@ class _TutorialPROFILEWidgetState extends State<TutorialPROFILEWidget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 30.0, 0.0, 30.0),
                                           child: Image.asset(
-                                            'assets/images/fin_onboarding_3@2x.png',
+                                            'assets/images/Frame_(3).png',
                                             width: 300.0,
                                             height: 250.0,
-                                            fit: BoxFit.fitWidth,
+                                            fit: BoxFit.contain,
                                           ),
                                         ),
                                       ],

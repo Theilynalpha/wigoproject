@@ -23,6 +23,8 @@ class _HomePageAltWidgetState extends State<HomePageAltWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => HomePageAltModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

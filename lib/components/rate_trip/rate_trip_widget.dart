@@ -70,6 +70,8 @@ class _RateTripWidgetState extends State<RateTripWidget>
           !anim.applyInitialState),
       this,
     );
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

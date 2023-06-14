@@ -5,7 +5,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
-import '/pages/transfer_complete/transfer_complete_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -29,68 +28,9 @@ class _TransferFundsWidgetState extends State<TransferFundsWidget>
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   final animationsMap = {
-    'containerOnPageLoadAnimation': AnimationInfo(
+    'dropDownOnPageLoadAnimation': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
       effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: Offset(0.0, 30.0),
-          end: Offset(0.0, 0.0),
-        ),
-        ScaleEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: Offset(0.4, 0.0),
-          end: Offset(0.0, 1.0),
-        ),
-      ],
-    ),
-    'buttonOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: Offset(0.0, 47.0),
-          end: Offset(0.0, 0.0),
-        ),
-        ScaleEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: Offset(1.0, 0.0),
-          end: Offset(0.0, 1.0),
-        ),
-      ],
-    ),
-    'dropDownOnPageLoadAnimation1': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 100.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
         MoveEffect(
           curve: Curves.easeInOut,
           delay: 100.ms,
@@ -101,32 +41,6 @@ class _TransferFundsWidgetState extends State<TransferFundsWidget>
         ScaleEffect(
           curve: Curves.easeInOut,
           delay: 100.ms,
-          duration: 600.ms,
-          begin: Offset(1.0, 0.0),
-          end: Offset(0.0, 1.0),
-        ),
-      ],
-    ),
-    'dropDownOnPageLoadAnimation2': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 140.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 140.ms,
-          duration: 600.ms,
-          begin: Offset(0.0, 70.0),
-          end: Offset(0.0, 0.0),
-        ),
-        ScaleEffect(
-          curve: Curves.easeInOut,
-          delay: 140.ms,
           duration: 600.ms,
           begin: Offset(1.0, 0.0),
           end: Offset(0.0, 1.0),
@@ -237,6 +151,8 @@ class _TransferFundsWidgetState extends State<TransferFundsWidget>
           !anim.applyInitialState),
       this,
     );
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -311,7 +227,7 @@ class _TransferFundsWidgetState extends State<TransferFundsWidget>
                               size: 30.0,
                             ),
                             onPressed: () async {
-                              Navigator.pop(context);
+                              context.pop();
                             },
                           ),
                         ),
@@ -421,8 +337,7 @@ class _TransferFundsWidgetState extends State<TransferFundsWidget>
                             ),
                           ],
                         ),
-                      ).animateOnPageLoad(
-                          animationsMap['containerOnPageLoadAnimation']!),
+                      ),
                     ),
                     FFButtonWidget(
                       onPressed: () {
@@ -447,8 +362,7 @@ class _TransferFundsWidgetState extends State<TransferFundsWidget>
                         ),
                         borderRadius: BorderRadius.circular(8.0),
                       ),
-                    ).animateOnPageLoad(
-                        animationsMap['buttonOnPageLoadAnimation']!),
+                    ),
                     Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
@@ -490,7 +404,7 @@ class _TransferFundsWidgetState extends State<TransferFundsWidget>
                         hidesUnderline: true,
                         isSearchable: false,
                       ).animateOnPageLoad(
-                          animationsMap['dropDownOnPageLoadAnimation1']!),
+                          animationsMap['dropDownOnPageLoadAnimation']!),
                     ),
                     Padding(
                       padding:
@@ -535,8 +449,7 @@ class _TransferFundsWidgetState extends State<TransferFundsWidget>
                             20.0, 20.0, 12.0, 20.0),
                         hidesUnderline: true,
                         isSearchable: false,
-                      ).animateOnPageLoad(
-                          animationsMap['dropDownOnPageLoadAnimation2']!),
+                      ),
                     ),
                     Padding(
                       padding:
@@ -632,14 +545,15 @@ class _TransferFundsWidgetState extends State<TransferFundsWidget>
                   children: [
                     FFButtonWidget(
                       onPressed: () async {
-                        await Navigator.push(
-                          context,
-                          PageTransition(
-                            type: PageTransitionType.bottomToTop,
-                            duration: Duration(milliseconds: 220),
-                            reverseDuration: Duration(milliseconds: 220),
-                            child: TransferCompleteWidget(),
-                          ),
+                        context.pushNamed(
+                          'transferComplete',
+                          extra: <String, dynamic>{
+                            kTransitionInfoKey: TransitionInfo(
+                              hasTransition: true,
+                              transitionType: PageTransitionType.bottomToTop,
+                              duration: Duration(milliseconds: 220),
+                            ),
+                          },
                         );
                       },
                       text: FFLocalizations.of(context).getText(

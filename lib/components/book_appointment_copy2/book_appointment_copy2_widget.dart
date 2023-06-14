@@ -6,7 +6,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -19,12 +18,7 @@ import 'book_appointment_copy2_model.dart';
 export 'book_appointment_copy2_model.dart';
 
 class BookAppointmentCopy2Widget extends StatefulWidget {
-  const BookAppointmentCopy2Widget({
-    Key? key,
-    this.userProfile,
-  }) : super(key: key);
-
-  final DocumentReference? userProfile;
+  const BookAppointmentCopy2Widget({Key? key}) : super(key: key);
 
   @override
   _BookAppointmentCopy2WidgetState createState() =>
@@ -615,7 +609,7 @@ class _BookAppointmentCopy2WidgetState extends State<BookAppointmentCopy2Widget>
                   children: [
                     FFButtonWidget(
                       onPressed: () async {
-                        Navigator.pop(context);
+                        context.pop();
                       },
                       text: FFLocalizations.of(context).getText(
                         'szslbd50' /* Continue */,

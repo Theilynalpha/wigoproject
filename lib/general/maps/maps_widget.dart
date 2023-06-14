@@ -21,7 +21,6 @@ class _MapsWidgetState extends State<MapsWidget> {
   late MapsModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final _unfocusNode = FocusNode();
   LatLng? currentUserLocationValue;
 
   @override
@@ -31,13 +30,13 @@ class _MapsWidgetState extends State<MapsWidget> {
 
     getCurrentUserLocation(defaultLocation: LatLng(0.0, 0.0), cached: true)
         .then((loc) => setState(() => currentUserLocationValue = loc));
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
   void dispose() {
     _model.dispose();
 
-    _unfocusNode.dispose();
     super.dispose();
   }
 
@@ -60,7 +59,7 @@ class _MapsWidgetState extends State<MapsWidget> {
     }
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
       child: Scaffold(
         key: scaffoldKey,
         resizeToAvoidBottomInset: false,

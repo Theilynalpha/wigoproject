@@ -26,6 +26,8 @@ class _NotificationsSettingsWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => NotificationsSettingsModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -49,7 +51,7 @@ class _NotificationsSettingsWidgetState
           hoverColor: Colors.transparent,
           highlightColor: Colors.transparent,
           onTap: () async {
-            Navigator.pop(context);
+            context.pop();
           },
           child: Icon(
             Icons.chevron_left_rounded,
@@ -179,7 +181,7 @@ class _NotificationsSettingsWidgetState
               padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
               child: FFButtonWidget(
                 onPressed: () async {
-                  Navigator.pop(context);
+                  context.pop();
                 },
                 text: FFLocalizations.of(context).getText(
                   'isgrgbfs' /* Save Changes */,

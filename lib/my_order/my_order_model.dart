@@ -13,6 +13,7 @@ import 'package:provider/provider.dart';
 class MyOrderModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
+  final unfocusNode = FocusNode();
   // State field(s) for Seach_Bar widget.
   TextEditingController? seachBarController;
   String? Function(BuildContext, String?)? seachBarControllerValidator;
@@ -28,8 +29,11 @@ class MyOrderModel extends FlutterFlowModel {
   void initState(BuildContext context) {}
 
   void dispose() {
+    unfocusNode.dispose();
     seachBarController?.dispose();
   }
+
+  /// Action blocks are added here.
 
   /// Additional helper methods are added here.
 

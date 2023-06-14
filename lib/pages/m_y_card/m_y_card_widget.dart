@@ -2,7 +2,6 @@ import '/components/pause_card/pause_card_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/pages/transfer_funds/transfer_funds_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -27,6 +26,8 @@ class _MYCardWidgetState extends State<MYCardWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => MYCardModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -62,7 +63,7 @@ class _MYCardWidgetState extends State<MYCardWidget> {
           hoverColor: Colors.transparent,
           highlightColor: Colors.transparent,
           onTap: () async {
-            Navigator.pop(context);
+            context.pop();
           },
           child: Icon(
             Icons.chevron_left_rounded,
@@ -304,15 +305,16 @@ class _MYCardWidgetState extends State<MYCardWidget> {
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
-                                    await Navigator.push(
-                                      context,
-                                      PageTransition(
-                                        type: PageTransitionType.bottomToTop,
-                                        duration: Duration(milliseconds: 220),
-                                        reverseDuration:
-                                            Duration(milliseconds: 220),
-                                        child: TransferFundsWidget(),
-                                      ),
+                                    context.pushNamed(
+                                      'transferFunds',
+                                      extra: <String, dynamic>{
+                                        kTransitionInfoKey: TransitionInfo(
+                                          hasTransition: true,
+                                          transitionType:
+                                              PageTransitionType.bottomToTop,
+                                          duration: Duration(milliseconds: 220),
+                                        ),
+                                      },
                                     );
                                   },
                                   child: Column(

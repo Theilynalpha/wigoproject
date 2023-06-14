@@ -22,6 +22,8 @@ class ChangePasswordModel extends FlutterFlowModel {
     emailAddressController?.dispose();
   }
 
+  /// Action blocks are added here.
+
   /// Additional helper methods are added here.
 
 }

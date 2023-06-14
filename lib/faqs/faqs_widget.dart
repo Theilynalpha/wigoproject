@@ -19,26 +19,26 @@ class _FaqsWidgetState extends State<FaqsWidget> {
   late FaqsModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => FaqsModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
   void dispose() {
     _model.dispose();
 
-    _unfocusNode.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -51,7 +51,7 @@ class _FaqsWidgetState extends State<FaqsWidget> {
             hoverColor: Colors.transparent,
             highlightColor: Colors.transparent,
             onTap: () async {
-              Navigator.pop(context);
+              context.pop();
             },
             child: Icon(
               Icons.chevron_left_rounded,
@@ -61,7 +61,7 @@ class _FaqsWidgetState extends State<FaqsWidget> {
           ),
           title: Text(
             FFLocalizations.of(context).getText(
-              '0n4evu4s' /* Payment */,
+              '0n4evu4s' /* Help Center */,
             ),
             style: FlutterFlowTheme.of(context).headlineSmall,
           ),

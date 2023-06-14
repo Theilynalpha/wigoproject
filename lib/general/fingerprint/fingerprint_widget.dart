@@ -1,4 +1,3 @@
-import '/components/congrast/congrast_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -24,7 +23,6 @@ class _FingerprintWidgetState extends State<FingerprintWidget>
   late FingerprintModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final _unfocusNode = FocusNode();
 
   final animationsMap = {
     'imageOnPageLoadAnimation': AnimationInfo(
@@ -52,20 +50,21 @@ class _FingerprintWidgetState extends State<FingerprintWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => FingerprintModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
   void dispose() {
     _model.dispose();
 
-    _unfocusNode.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -78,7 +77,7 @@ class _FingerprintWidgetState extends State<FingerprintWidget>
             hoverColor: Colors.transparent,
             highlightColor: Colors.transparent,
             onTap: () async {
-              Navigator.pop(context);
+              context.pop();
             },
             child: Icon(
               Icons.chevron_left_rounded,
@@ -172,23 +171,8 @@ class _FingerprintWidgetState extends State<FingerprintWidget>
                       padding:
                           EdgeInsetsDirectional.fromSTEB(25.0, 0.0, 25.0, 25.0),
                       child: FFButtonWidget(
-                        onPressed: () async {
-                          await showModalBottomSheet(
-                            isScrollControlled: true,
-                            backgroundColor: Colors.transparent,
-                            enableDrag: false,
-                            context: context,
-                            builder: (context) {
-                              return GestureDetector(
-                                onTap: () => FocusScope.of(context)
-                                    .requestFocus(_unfocusNode),
-                                child: Padding(
-                                  padding: MediaQuery.of(context).viewInsets,
-                                  child: CongrastWidget(),
-                                ),
-                              );
-                            },
-                          ).then((value) => setState(() {}));
+                        onPressed: () {
+                          print('Button pressed ...');
                         },
                         text: FFLocalizations.of(context).getText(
                           'n85p5hp6' /* Activate */,

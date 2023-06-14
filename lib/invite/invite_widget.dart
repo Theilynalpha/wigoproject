@@ -22,7 +22,6 @@ class _InviteWidgetState extends State<InviteWidget> {
   late InviteModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
@@ -30,20 +29,20 @@ class _InviteWidgetState extends State<InviteWidget> {
     _model = createModel(context, () => InviteModel());
 
     _model.textController ??= TextEditingController();
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
   void dispose() {
     _model.dispose();
 
-    _unfocusNode.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -507,7 +506,7 @@ class _InviteWidgetState extends State<InviteWidget> {
                                           width: 1.0,
                                         ),
                                         borderRadius:
-                                            BorderRadius.circular(8.0),
+                                            BorderRadius.circular(30.0),
                                       ),
                                     ),
                                   ],
@@ -622,7 +621,7 @@ class _InviteWidgetState extends State<InviteWidget> {
                                           width: 1.0,
                                         ),
                                         borderRadius:
-                                            BorderRadius.circular(8.0),
+                                            BorderRadius.circular(30.0),
                                       ),
                                     ),
                                   ],
@@ -739,7 +738,7 @@ class _InviteWidgetState extends State<InviteWidget> {
                                           width: 1.0,
                                         ),
                                         borderRadius:
-                                            BorderRadius.circular(8.0),
+                                            BorderRadius.circular(30.0),
                                       ),
                                     ),
                                   ],
@@ -856,7 +855,7 @@ class _InviteWidgetState extends State<InviteWidget> {
                                           width: 1.0,
                                         ),
                                         borderRadius:
-                                            BorderRadius.circular(8.0),
+                                            BorderRadius.circular(30.0),
                                       ),
                                     ),
                                   ],
@@ -971,7 +970,7 @@ class _InviteWidgetState extends State<InviteWidget> {
                                           width: 1.0,
                                         ),
                                         borderRadius:
-                                            BorderRadius.circular(8.0),
+                                            BorderRadius.circular(30.0),
                                       ),
                                     ),
                                   ],

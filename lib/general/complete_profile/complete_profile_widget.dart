@@ -1,12 +1,9 @@
 import '/backend/firebase_storage/storage.dart';
-import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -20,170 +17,10 @@ class CompleteProfileWidget extends StatefulWidget {
   _CompleteProfileWidgetState createState() => _CompleteProfileWidgetState();
 }
 
-class _CompleteProfileWidgetState extends State<CompleteProfileWidget>
-    with TickerProviderStateMixin {
+class _CompleteProfileWidgetState extends State<CompleteProfileWidget> {
   late CompleteProfileModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-
-  final animationsMap = {
-    'circleImageOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.bounceOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.bounceOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: Offset(0.0, 19.0),
-          end: Offset(0.0, 0.0),
-        ),
-        ScaleEffect(
-          curve: Curves.bounceOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: Offset(1.0, 0.0),
-          end: Offset(0.0, 1.0),
-        ),
-      ],
-    ),
-    'textOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 50.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 50.ms,
-          duration: 600.ms,
-          begin: Offset(0.0, 20.0),
-          end: Offset(0.0, 0.0),
-        ),
-        ScaleEffect(
-          curve: Curves.easeInOut,
-          delay: 50.ms,
-          duration: 600.ms,
-          begin: Offset(1.0, 0.0),
-          end: Offset(0.0, 1.0),
-        ),
-      ],
-    ),
-    'textFieldOnPageLoadAnimation1': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 100.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 100.ms,
-          duration: 600.ms,
-          begin: Offset(0.0, 20.0),
-          end: Offset(0.0, 0.0),
-        ),
-        ScaleEffect(
-          curve: Curves.easeInOut,
-          delay: 100.ms,
-          duration: 600.ms,
-          begin: Offset(1.0, 0.0),
-          end: Offset(0.0, 1.0),
-        ),
-      ],
-    ),
-    'textFieldOnPageLoadAnimation2': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 200.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 200.ms,
-          duration: 600.ms,
-          begin: Offset(0.0, 40.0),
-          end: Offset(0.0, 0.0),
-        ),
-        ScaleEffect(
-          curve: Curves.easeInOut,
-          delay: 200.ms,
-          duration: 600.ms,
-          begin: Offset(1.0, 0.0),
-          end: Offset(0.0, 1.0),
-        ),
-      ],
-    ),
-    'textFieldOnPageLoadAnimation3': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 200.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 200.ms,
-          duration: 600.ms,
-          begin: Offset(0.0, 60.0),
-          end: Offset(0.0, 0.0),
-        ),
-        ScaleEffect(
-          curve: Curves.easeInOut,
-          delay: 200.ms,
-          duration: 600.ms,
-          begin: Offset(1.0, 0.0),
-          end: Offset(0.0, 1.0),
-        ),
-      ],
-    ),
-    'buttonOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.bounceOut,
-          delay: 400.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.bounceOut,
-          delay: 400.ms,
-          duration: 600.ms,
-          begin: Offset(0.0, 40.0),
-          end: Offset(0.0, 0.0),
-        ),
-        ScaleEffect(
-          curve: Curves.bounceOut,
-          delay: 400.ms,
-          duration: 600.ms,
-          begin: Offset(1.0, 0.0),
-          end: Offset(0.0, 1.0),
-        ),
-      ],
-    ),
-  };
 
   @override
   void initState() {
@@ -193,12 +30,7 @@ class _CompleteProfileWidgetState extends State<CompleteProfileWidget>
     _model.yourNameController ??= TextEditingController();
     _model.yourAgeController ??= TextEditingController();
     _model.yourTitleController ??= TextEditingController();
-    setupAnimations(
-      animationsMap.values.where((anim) =>
-          anim.trigger == AnimationTrigger.onActionTrigger ||
-          !anim.applyInitialState),
-      this,
-    );
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -326,15 +158,14 @@ class _CompleteProfileWidgetState extends State<CompleteProfileWidget>
                         ),
                       ),
                     ),
-                  ).animateOnPageLoad(
-                      animationsMap['circleImageOnPageLoadAnimation']!),
+                  ),
                 ),
                 Text(
                   FFLocalizations.of(context).getText(
                     'r6npjsue' /* Upload a photo for us to easil... */,
                   ),
                   style: FlutterFlowTheme.of(context).bodyMedium,
-                ).animateOnPageLoad(animationsMap['textOnPageLoadAnimation']!),
+                ),
                 Padding(
                   padding:
                       EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 0.0),
@@ -384,8 +215,7 @@ class _CompleteProfileWidgetState extends State<CompleteProfileWidget>
                     style: FlutterFlowTheme.of(context).bodyMedium,
                     validator:
                         _model.yourNameControllerValidator.asValidator(context),
-                  ).animateOnPageLoad(
-                      animationsMap['textFieldOnPageLoadAnimation1']!),
+                  ),
                 ),
                 Padding(
                   padding:
@@ -440,8 +270,7 @@ class _CompleteProfileWidgetState extends State<CompleteProfileWidget>
                     keyboardType: TextInputType.number,
                     validator:
                         _model.yourAgeControllerValidator.asValidator(context),
-                  ).animateOnPageLoad(
-                      animationsMap['textFieldOnPageLoadAnimation2']!),
+                  ),
                 ),
                 Padding(
                   padding:
@@ -495,14 +324,13 @@ class _CompleteProfileWidgetState extends State<CompleteProfileWidget>
                     style: FlutterFlowTheme.of(context).bodyMedium,
                     validator: _model.yourTitleControllerValidator
                         .asValidator(context),
-                  ).animateOnPageLoad(
-                      animationsMap['textFieldOnPageLoadAnimation3']!),
+                  ),
                 ),
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                   child: FFButtonWidget(
-                    onPressed: () {
-                      print('Button-Login pressed ...');
+                    onPressed: () async {
+                      context.pushNamed('homePage_alt');
                     },
                     text: FFLocalizations.of(context).getText(
                       'hbhd3bdt' /* Complete Profile */,
@@ -527,8 +355,7 @@ class _CompleteProfileWidgetState extends State<CompleteProfileWidget>
                       ),
                       borderRadius: BorderRadius.circular(30.0),
                     ),
-                  ).animateOnPageLoad(
-                      animationsMap['buttonOnPageLoadAnimation']!),
+                  ),
                 ),
               ],
             ),

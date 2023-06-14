@@ -21,7 +21,6 @@ class _SizePageWidgetState extends State<SizePageWidget> {
   late SizePageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
@@ -32,20 +31,20 @@ class _SizePageWidgetState extends State<SizePageWidget> {
     _model.textController2 ??= TextEditingController();
     _model.textController3 ??= TextEditingController();
     _model.textController4 ??= TextEditingController();
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
   void dispose() {
     _model.dispose();
 
-    _unfocusNode.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -127,22 +126,10 @@ class _SizePageWidgetState extends State<SizePageWidget> {
                                     setState(() => _model.dropDownValue1 = val),
                                 width: 329.0,
                                 height: 61.0,
-                                searchHintTextStyle:
-                                    FlutterFlowTheme.of(context)
-                                        .bodyLarge
-                                        .override(
-                                          fontFamily: 'Poppins',
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                        ),
                                 textStyle:
                                     FlutterFlowTheme.of(context).bodyMedium,
                                 hintText: FFLocalizations.of(context).getText(
                                   'kz5o9leu' /* Electronics */,
-                                ),
-                                searchHintText:
-                                    FFLocalizations.of(context).getText(
-                                  'igqp4jya' /* Search for an item... */,
                                 ),
                                 fillColor: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
@@ -197,24 +184,11 @@ class _SizePageWidgetState extends State<SizePageWidget> {
                                         () => _model.dropDownValue2 = val),
                                     width: 68.0,
                                     height: 58.0,
-                                    searchHintTextStyle:
-                                        FlutterFlowTheme.of(context)
-                                            .bodyLarge
-                                            .override(
-                                              fontFamily: 'Poppins',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                            ),
                                     textStyle:
                                         FlutterFlowTheme.of(context).bodyMedium,
                                     hintText:
                                         FFLocalizations.of(context).getText(
                                       'je3z8aev' /* Kg */,
-                                    ),
-                                    searchHintText:
-                                        FFLocalizations.of(context).getText(
-                                      '4qv8fahl' /* Search for an item... */,
                                     ),
                                     fillColor:
                                         FlutterFlowTheme.of(context).background,
@@ -343,24 +317,11 @@ class _SizePageWidgetState extends State<SizePageWidget> {
                                             () => _model.dropDownValue3 = val),
                                         width: 75.0,
                                         height: 58.0,
-                                        searchHintTextStyle:
-                                            FlutterFlowTheme.of(context)
-                                                .bodyLarge
-                                                .override(
-                                                  fontFamily: 'Poppins',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryText,
-                                                ),
                                         textStyle: FlutterFlowTheme.of(context)
                                             .bodyMedium,
                                         hintText:
                                             FFLocalizations.of(context).getText(
                                           '4amlam3l' /* Cm */,
-                                        ),
-                                        searchHintText:
-                                            FFLocalizations.of(context).getText(
-                                          'hh4ksgeb' /* Search for an item... */,
                                         ),
                                         fillColor: FlutterFlowTheme.of(context)
                                             .background,
@@ -477,24 +438,11 @@ class _SizePageWidgetState extends State<SizePageWidget> {
                                             () => _model.dropDownValue4 = val),
                                         width: 75.0,
                                         height: 58.0,
-                                        searchHintTextStyle:
-                                            FlutterFlowTheme.of(context)
-                                                .bodyLarge
-                                                .override(
-                                                  fontFamily: 'Poppins',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryText,
-                                                ),
                                         textStyle: FlutterFlowTheme.of(context)
                                             .bodyMedium,
                                         hintText:
                                             FFLocalizations.of(context).getText(
                                           '7b48aa3i' /* Cm */,
-                                        ),
-                                        searchHintText:
-                                            FFLocalizations.of(context).getText(
-                                          '8ozaw6an' /* Search for an item... */,
                                         ),
                                         fillColor: FlutterFlowTheme.of(context)
                                             .background,
@@ -611,24 +559,11 @@ class _SizePageWidgetState extends State<SizePageWidget> {
                                             () => _model.dropDownValue5 = val),
                                         width: 75.0,
                                         height: 58.0,
-                                        searchHintTextStyle:
-                                            FlutterFlowTheme.of(context)
-                                                .bodyLarge
-                                                .override(
-                                                  fontFamily: 'Poppins',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryText,
-                                                ),
                                         textStyle: FlutterFlowTheme.of(context)
                                             .bodyMedium,
                                         hintText:
                                             FFLocalizations.of(context).getText(
                                           'ny82tuj0' /* Cm */,
-                                        ),
-                                        searchHintText:
-                                            FFLocalizations.of(context).getText(
-                                          'p7qivio5' /* Search for an item... */,
                                         ),
                                         fillColor: FlutterFlowTheme.of(context)
                                             .background,
@@ -733,38 +668,36 @@ class _SizePageWidgetState extends State<SizePageWidget> {
                       ),
                     ),
                   ),
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
-                    child: FFButtonWidget(
-                      onPressed: () {
-                        print('Button pressed ...');
-                      },
-                      text: FFLocalizations.of(context).getText(
-                        '9tsvil84' /* Continue */,
-                      ),
-                      options: FFButtonOptions(
-                        width: 305.0,
-                        height: 53.0,
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        iconPadding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: Color(0xFF22BB9C),
-                        textStyle:
-                            FlutterFlowTheme.of(context).titleSmall.override(
-                                  fontFamily: 'Lexend',
-                                  color: Colors.white,
-                                ),
-                        borderSide: BorderSide(
-                          color: Colors.transparent,
-                          width: 1.0,
-                        ),
-                        borderRadius: BorderRadius.circular(30.0),
-                      ),
-                    ),
-                  ),
                 ],
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+                child: FFButtonWidget(
+                  onPressed: () async {
+                    context.pushNamed('PinC');
+                  },
+                  text: FFLocalizations.of(context).getText(
+                    'c1xa7lzs' /* Continue */,
+                  ),
+                  options: FFButtonOptions(
+                    width: 190.0,
+                    height: 50.0,
+                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    iconPadding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    color: FlutterFlowTheme.of(context).primary,
+                    textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                          fontFamily: 'Lexend',
+                          color: FlutterFlowTheme.of(context).textColor,
+                        ),
+                    elevation: 3.0,
+                    borderSide: BorderSide(
+                      color: Colors.transparent,
+                      width: 1.0,
+                    ),
+                    borderRadius: BorderRadius.circular(30.0),
+                  ),
+                ),
               ),
             ],
           ),
